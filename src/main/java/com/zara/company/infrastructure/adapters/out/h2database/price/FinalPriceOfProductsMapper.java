@@ -1,7 +1,6 @@
 package com.zara.apirest.infrastructure.adapters.out.h2database.price;
 
-import com.zara.company.domain.entities.Price;
-
+import com.zara.apirest.domain.entities.Price;
 
 public class FinalPriceOfProductsMapper {
 

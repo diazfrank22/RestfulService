@@ -1,8 +1,7 @@
 package com.zara.apirest.infrastructure.adapters.out.h2database.price;
 
-import com.zara.company.application.port.out.FinalPriceOfProductsPort;
-import com.zara.company.common.PersistenceAdapter;
-import com.zara.company.domain.entities.Price;
+import com.zara.apirest.common.PersistenceAdapter;
+import com.zara.apirest.domain.entities.Price;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDate;
