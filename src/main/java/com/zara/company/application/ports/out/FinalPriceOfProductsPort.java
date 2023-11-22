@@ -4,6 +4,7 @@ import com.zara.company.domain.entities.Price;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface FinalPriceOfProductsPort {
@@ -13,7 +14,7 @@ public interface FinalPriceOfProductsPort {
     @Setter
     class Parameter {
 
-        private String applicationDate;
+        private LocalDate applicationDate;
 
         private Long productId;
 
@@ -21,7 +22,7 @@ public interface FinalPriceOfProductsPort {
 
         public Parameter(com.zara.company.application.ports.in.FinalPriceOfProductsPort.Parameter inpputParameter) {
 
-            this.applicationDate = inpputParameter.getApplicationDate();
+            this.applicationDate = LocalDate.parse(inpputParameter.getApplicationDate());
             this.productId = inpputParameter.getProductId();
             this.brandId = inpputParameter.getBrandId();
 

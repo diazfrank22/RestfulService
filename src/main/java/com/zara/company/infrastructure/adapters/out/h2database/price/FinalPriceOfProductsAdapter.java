@@ -5,7 +5,6 @@ import com.zara.company.common.PersistenceAdapter;
 import com.zara.company.domain.entities.Price;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,10 +20,9 @@ public class FinalPriceOfProductsAdapter implements FinalPriceOfProductsPort {
     @Override
     public List<Price> searchFinalPriceOfProducts(FinalPriceOfProductsPort.Parameter inputParameter) {
 
-        return finalPriceOfProductsRepository.findFinalPriceByProductIdAndBrandIdAndAppDate(inputParameter.getBrandId(), inputParameter.getProductId(), LocalDate.parse(inputParameter.getApplicationDate()))
+        return finalPriceOfProductsRepository.findFinalPriceByProductIdAndBrandIdAndAppDate(inputParameter.getBrandId(), inputParameter.getProductId(), inputParameter.getApplicationDate())
                                              .stream()
                                              .map(FinalPriceOfProductsMapper::entityToDomain)
                                              .collect(Collectors.toList());
-
     }
 }
