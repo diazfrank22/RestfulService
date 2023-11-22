@@ -1,7 +1,7 @@
-package com.zara.apirest;
+package com.zara.company;
 
-import com.zara.apirest.infrastructure.adapters.out.h2database.price.FinalPriceOfProductsRepository;
-import com.zara.apirest.infrastructure.adapters.out.h2database.price.PriceEntity;
+import com.zara.company.infrastructure.adapters.out.h2database.price.FinalPriceOfProductsRepository;
+import com.zara.company.infrastructure.adapters.out.h2database.price.PriceEntity;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Component;
 

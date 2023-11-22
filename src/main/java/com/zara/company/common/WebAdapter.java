@@ -1,4 +1,4 @@
-package com.zara.apirest.common;
+package com.zara.company.common;
 
 import org.springframework.core.annotation.AliasFor;
 import org.springframework.stereotype.Component;

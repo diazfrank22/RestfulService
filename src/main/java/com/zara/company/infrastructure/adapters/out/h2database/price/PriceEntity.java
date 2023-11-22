@@ -1,4 +1,4 @@
-package com.zara.apirest.infrastructure.adapters.out.h2database.price;
+package com.zara.company.infrastructure.adapters.out.h2database.price;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

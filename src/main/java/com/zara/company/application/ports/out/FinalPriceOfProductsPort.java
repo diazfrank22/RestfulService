@@ -1,11 +1,13 @@
-package com.zara.company.application.port.out;
+package com.zara.company.application.ports.out;
 
 import com.zara.company.domain.entities.Price;
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.List;
 
 public interface FinalPriceOfProductsPort {
-    public List<Price> searchFinalPriceOfProducts(FinalPriceOfProductsPort.Parameter inputParameter);
+    public List<Price> searchFinalPriceOfProducts(Parameter inputParameter);
 
     @Getter
     @Setter
@@ -17,7 +19,7 @@ public interface FinalPriceOfProductsPort {
 
         private Long brandId;
 
-        public Parameter(com.zara.company.application.port.in.FinalPriceOfProductsPort.Parameter inpputParameter) {
+        public Parameter(com.zara.company.application.ports.in.FinalPriceOfProductsPort.Parameter inpputParameter) {
 
             this.applicationDate = inpputParameter.getApplicationDate();
             this.productId = inpputParameter.getProductId();

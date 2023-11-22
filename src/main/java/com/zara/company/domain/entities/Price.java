@@ -1,4 +1,4 @@
-package com.zara.apirest.domain.entities;
+package com.zara.company.domain.entities;
 
 import java.time.LocalDateTime;
 

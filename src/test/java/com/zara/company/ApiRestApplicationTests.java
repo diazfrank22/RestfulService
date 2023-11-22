@@ -1,4 +1,4 @@
-package com.zara.apirest;
+package com.zara.company;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
