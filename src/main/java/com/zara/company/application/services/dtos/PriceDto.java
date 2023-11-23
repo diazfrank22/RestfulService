@@ -1,16 +1,14 @@
-package com.zara.company.infrastructure.adapters.in.apirest.price.dtos;
+package com.zara.company.application.services.dtos;
 
 
 import com.zara.company.domain.entities.Price;
 import lombok.*;
 
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Map;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
 @Getter
 @Setter
@@ -21,7 +19,6 @@ public class PriceDto {
     private Long priceList;
     private LocalDateTime startDate;
     private Double price;
-   private Map<String, String> message;
 
    public PriceDto(Price price){
        this.productid=price.getProductId();

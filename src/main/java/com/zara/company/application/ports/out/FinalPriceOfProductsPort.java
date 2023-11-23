@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface FinalPriceOfProductsPort {
-    public List<Price> searchFinalPriceOfProducts(Parameter inputParameter);
+    public List<Price> searchFinalPriceOfProducts(Parameter inputParameters);
 
     @Getter
     @Setter
@@ -20,7 +20,7 @@ public interface FinalPriceOfProductsPort {
 
         private Long brandId;
 
-        public Parameter(com.zara.company.application.ports.in.FinalPriceOfProductsPort.Parameter inpputParameter) {
+        public Parameter(com.zara.company.application.ports.in.FinalPriceOfProductsPort.Parameters inpputParameter) {
 
             this.applicationDate = LocalDate.parse(inpputParameter.getApplicationDate());
             this.productId = inpputParameter.getProductId();

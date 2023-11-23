@@ -1,5 +1,6 @@
 package com.zara.company.application.ports.in;
 
+import com.zara.company.application.services.dtos.PriceDto;
 import com.zara.company.domain.entities.Price;
 import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.Min;
@@ -12,13 +13,13 @@ import java.util.List;
 
 public interface FinalPriceOfProductsPort {
 
-    public List<Price> searchFinalPriceOfProducts (Parameter  inputParameter);
+    public List<PriceDto> searchFinalPriceOfProducts (Parameters  inputParameters);
 
     @Getter
     @Setter
     @NoArgsConstructor
     @AllArgsConstructor
-    class Parameter {
+    class Parameters {
 
         //@NotNull
         @Pattern(regexp = "^\\d{4}-\\d{2}-\\d{2}$", message = "Date format invalid must be YYYY-MM-DD")
@@ -34,7 +35,7 @@ public interface FinalPriceOfProductsPort {
         @Digits(integer = 10, fraction = 0, message = "The field must be between 1 and 10 digits")
         private Long brandId;
 
-        public Parameter(Parameter inputParameter) {
+        public Parameters(Parameters inputParameter) {
 
             this.applicationDate = inputParameter.getApplicationDate();
             this.productId = inputParameter.getProductId();
