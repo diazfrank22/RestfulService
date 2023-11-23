@@ -1,7 +1,6 @@
 package com.zara.company.application.ports.in;
 
-import com.zara.company.application.services.dtos.PriceDto;
-import com.zara.company.domain.entities.Price;
+import com.zara.company.application.ports.in.dtos.PriceDto;
 import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Pattern;
@@ -11,9 +10,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.util.List;
 
-public interface FinalPriceOfProductsPort {
+public interface FinalPriceOfProductsInPort {
 
-    public List<PriceDto> searchFinalPriceOfProducts (Parameters  inputParameters);
+    public List<PriceDto> searchFinalPriceOfProducts (FinalPriceOfProductsInPort.Parameters  inputParameters);
 
     @Getter
     @Setter

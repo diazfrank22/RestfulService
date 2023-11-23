@@ -1,7 +1,7 @@
 package com.zara.company.infrastructure.adapters.in.apirest.price;
 
-import com.zara.company.application.ports.in.FinalPriceOfProductsPort;
-import com.zara.company.application.services.dtos.PriceDto;
+import com.zara.company.application.ports.in.FinalPriceOfProductsInPort;
+import com.zara.company.application.ports.in.dtos.PriceDto;
 import com.zara.company.common.WebAdapter;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,19 +23,19 @@ import java.util.Map;
 @RequestMapping("api/prices")
 public class FinalPriceOfProductsController {
 
-    private final FinalPriceOfProductsPort finalPriceOfProductsPort;
+    private final FinalPriceOfProductsInPort finalPriceOfProductsPort;
 
     @Autowired
-    public FinalPriceOfProductsController(FinalPriceOfProductsPort finalPriceOfProductsPort) {
+    public FinalPriceOfProductsController(FinalPriceOfProductsInPort finalPriceOfProductsPort) {
         this.finalPriceOfProductsPort = finalPriceOfProductsPort;
     }
 
     @GetMapping
-    public List<ResponseEntity> searchFinalPriceOfProducts(@Valid @RequestBody FinalPriceOfProductsPort.Parameters inputParameters, BindingResult bindingResultValidation){
+    public List<ResponseEntity> searchFinalPriceOfProducts(@Valid @RequestBody FinalPriceOfProductsInPort.Parameters bodyParameterInput, BindingResult bindingResultValidation){
 
-        FinalPriceOfProductsPort.Parameters InputParameters = new FinalPriceOfProductsPort.Parameters(inputParameters);
+        FinalPriceOfProductsInPort.Parameters inputParameters = new FinalPriceOfProductsInPort.Parameters(bodyParameterInput);
 
-        List<PriceDto> finalProductPriceResponse = finalPriceOfProductsPort.searchFinalPriceOfProducts(InputParameters);
+        List<PriceDto> finalProductPriceResponse = finalPriceOfProductsPort.searchFinalPriceOfProducts(inputParameters);
 
         //input parameter validation
         if (bindingResultValidation.hasErrors()){
@@ -50,11 +50,8 @@ public class FinalPriceOfProductsController {
         if (finalProductPriceResponse.equals(null) || finalProductPriceResponse.isEmpty()){
             return Collections.singletonList(new ResponseEntity<>(finalProductPriceResponse, HttpStatus.NOT_FOUND));
         }
-        if (finalProductPriceResponse != null || !finalProductPriceResponse.isEmpty()){
             return Collections.singletonList(new ResponseEntity<>(finalProductPriceResponse, HttpStatus.OK));
-        }
 
-        return null;
     }
 }
 

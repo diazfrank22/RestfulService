@@ -62,8 +62,6 @@
 			<version>4.5.1</version>
 			<scope>test</scope>
 		</dependency>
-
-
 		<dependency>
 			<groupId>org.jetbrains</groupId>
 			<artifactId>annotations</artifactId>
@@ -71,6 +69,13 @@
 			<scope>compile</scope>
 		</dependency>
 
+		<!-- ArchUnit -->
+		<dependency>
+			<groupId>com.tngtech.archunit</groupId>
+			<artifactId>archunit</artifactId>
+			<version>0.21.0</version> <!-- Reemplaza con la última versión disponible -->
+			<scope>test</scope> <!-- Importante: asegúrate de que ArchUnit esté disponible durante las pruebas -->
+		</dependency>
 	</dependencies>
 
 	<build>
