@@ -16,6 +16,8 @@ import java.time.LocalDateTime;
 public class PriceEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "price_id")
+    private Long priceId;
     @Column(name = "brand_id")
     private Long brandId;
     @Column(name = "start_date")
@@ -32,6 +34,7 @@ public class PriceEntity {
     private Double price;
     @Column(name = "currency")
     private String currency;
+
 
 }
 

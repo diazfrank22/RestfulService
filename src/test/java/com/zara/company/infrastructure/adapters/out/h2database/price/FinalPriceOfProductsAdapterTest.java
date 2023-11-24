@@ -43,7 +43,7 @@ public class FinalPriceOfProductsAdapterTest {
         //out port parameters
         var parametersOutPort = new FinalPriceOfProductsOutPort.Parameter(parametersInPort);
 
-        var priceEntity = new PriceEntity(1L, LocalDateTime.parse("2020-08-20T15:00:00", DateTimeFormatter.ISO_DATE_TIME), LocalDateTime.parse("2020-06-14T18:30:00", DateTimeFormatter.ISO_DATE_TIME), 2L, 35455L, "0", 25.45, "EUR");
+        var priceEntity = new PriceEntity(8l, 1L, LocalDateTime.parse("2020-08-20T15:00:00", DateTimeFormatter.ISO_DATE_TIME), LocalDateTime.parse("2020-06-14T18:30:00", DateTimeFormatter.ISO_DATE_TIME), 2L, 35455L, "0", 25.45, "EUR");
 
         List<PriceEntity> pricesEntityList = new ArrayList<>();
 

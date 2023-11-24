@@ -9,14 +9,10 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Component
-//@Configuration
+@Configuration
 public interface FinalPriceOfProductsRepository extends JpaRepository<PriceEntity,Long> {
 
-    @Query("SELECT p FROM PriceEntity p WHERE p.productId = :productId " +
-            "                             AND p.brandId = :brandId " +
-            "                             AND CAST(p.startDate AS DATE) = :applicationDate")
-    public List<PriceEntity> findFinalPriceByProductIdAndBrandIdAndAppDate(Long brandId,
-                                                                           Long productId,
-                                                                           LocalDate applicationDate);
+    @Query("SELECT p FROM PriceEntity p WHERE p.productId = :productId AND p.brandId = :brandId AND CAST(p.startDate AS DATE) = :applicationDate")
+    public List<PriceEntity> findFinalPriceByProductIdAndBrandIdAndAppDate(Long brandId, Long productId, LocalDate applicationDate);
 
 }

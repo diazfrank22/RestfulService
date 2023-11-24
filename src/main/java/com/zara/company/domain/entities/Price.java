@@ -1,8 +1,11 @@
 package com.zara.company.domain.entities;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Price {
+
+    private Long priceId;
     private Long brandId;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
@@ -11,6 +14,15 @@ public class Price {
     private String priority;
     private Double price;
     private String currency;
+
+    public Price(Long productid, Long brandId, Long priceList, LocalDateTime startDate, Double price, String priority) {
+        this.productId = productid;
+        this.brandId = brandId;
+        this.priceList = priceList;
+        this.startDate = startDate;
+        this.price = price;
+        this.priority = priority;
+    }
 
     public Price(Long productid, Long brandId, Long priceList, LocalDateTime startDate, Double price) {
         this.productId = productid;
@@ -84,10 +96,19 @@ public class Price {
         this.currency = currency;
     }
 
+    public Long getPriceId() {
+        return priceId;
+    }
+
+    public void setPriceId(Long priceId) {
+        this.priceId = priceId;
+    }
+
     @Override
     public String toString() {
         return "Price{" +
-                "brandId=" + brandId +
+                "priceId=" + priceId +
+                ", brandId=" + brandId +
                 ", startDate=" + startDate +
                 ", endDate=" + endDate +
                 ", priceList=" + priceList +

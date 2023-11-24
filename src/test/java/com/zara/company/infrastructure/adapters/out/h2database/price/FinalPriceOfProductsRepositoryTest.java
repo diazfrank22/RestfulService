@@ -22,12 +22,13 @@ public class FinalPriceOfProductsRepositoryTest {
 
         List<PriceEntity> expectedPrices = new ArrayList<>();
 
-        var pricesEntity = new PriceEntity(1L, LocalDateTime.parse("2020-08-20T15:00:00", DateTimeFormatter.ISO_DATE_TIME), LocalDateTime.parse("2020-06-14T18:30:00", DateTimeFormatter.ISO_DATE_TIME), 2L, 35455L, "0", 25.45, "EUR");
+        var pricesEntity = new PriceEntity(7L, 1l, LocalDateTime.parse("2020-08-20T15:00:00", DateTimeFormatter.ISO_DATE_TIME), LocalDateTime.parse("2020-06-14T18:30:00", DateTimeFormatter.ISO_DATE_TIME), 2L, 35455L, "0", 25.45, "EUR");
+
 
         expectedPrices.add(pricesEntity);
         startDataRepository.save(pricesEntity);
 
-        var finAllData = startDataRepository.findFinalPriceByProductIdAndBrandIdAndAppDate(1l, 35455l, LocalDate.parse("2020-08-20"));
+        List<PriceEntity> finAllData = startDataRepository.findFinalPriceByProductIdAndBrandIdAndAppDate(2l, 35455l, LocalDate.parse("2020-06-14"));
 
         assertEquals(expectedPrices.toString(), finAllData.toString());
     }

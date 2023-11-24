@@ -11,12 +11,14 @@ public class FinalPriceOfProductsMapper {
                        , priceEntity.getBrandId()
                        , priceEntity.getPriceList()
                        , priceEntity.getStartDate()
-                       , priceEntity.getPrice());
+                       , priceEntity.getPrice()
+                       , priceEntity.getPriority());
     }
 
     public static PriceEntity domainToEntity(Price price) {
 
-        return new PriceEntity(price.getBrandId()
+        return new PriceEntity( price.getPriceId()
+                              , price.getBrandId()
                               , price.getStartDate()
                               , price.getEndDate()
                               , price.getPriceList()
