@@ -3,6 +3,7 @@ package com.zara.company.infrastructure.adapters.in.apirest.price;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.zara.company.application.ports.in.FinalPriceOfProductsInPort;
 import com.zara.company.application.ports.in.dtos.PriceDto;
+import com.zara.company.application.ports.out.FinalPriceOfProductsOutPort;
 import com.zara.company.domain.entities.Price;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -14,6 +15,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -30,16 +32,10 @@ class FinalPriceOfProductsControllerTest {
     private static ResponseEntity responseEntityExpected;
     private static List<Price> priceEntityDomain = new ArrayList<>();
     private static List<String> finalPriceProductsResEntityExpected = new ArrayList<>();
-
-    @Mock
-    private BindingResult bindingResult;
-
     @Mock
     private FinalPriceOfProductsInPort finalPriceOfProductsPort;
-
     @InjectMocks
     FinalPriceOfProductsController finalPriceOfProductsController;
-
     @BeforeAll
     public static void setUp(){
 
@@ -92,5 +88,19 @@ class FinalPriceOfProductsControllerTest {
         //Then
         assertEquals("200 OK", finalPriceOfProductsresponse.get(0).getStatusCode().toString());
 
+    }
+
+    @Test
+    public void validateResponseOfTheDateParameter() {
+
+        //Given //input port parameters In  //Case 1
+        var parameterInPort = new FinalPriceOfProductsInPort.Parameters("2020-06-1", 35455l, 2l);
+        //When //out port parameters //Case 1
+        try{var parametersOutPort = new FinalPriceOfProductsOutPort.Parameter(parameterInPort);}
+        catch (DateTimeParseException e){
+            //Then
+            System.out.println(e.getMessage());
+            assertEquals("Text '2020-06-1' could not be parsed at index 8", e.getMessage());
+        }
     }
 }
