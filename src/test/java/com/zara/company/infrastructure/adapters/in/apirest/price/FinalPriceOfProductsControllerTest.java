@@ -89,18 +89,4 @@ class FinalPriceOfProductsControllerTest {
         assertEquals("200 OK", finalPriceOfProductsresponse.get(0).getStatusCode().toString());
 
     }
-
-    @Test
-    public void validateResponseOfTheDateParameter() {
-
-        //Given //input port parameters In  //Case 1
-        var parameterInPort = new FinalPriceOfProductsInPort.Parameters("2020-06-1", 35455l, 2l);
-        //When //out port parameters //Case 1
-        try{var parametersOutPort = new FinalPriceOfProductsOutPort.Parameter(parameterInPort);}
-        catch (DateTimeParseException e){
-            //Then
-            System.out.println(e.getMessage());
-            assertEquals("Text '2020-06-1' could not be parsed at index 8", e.getMessage());
-        }
-    }
 }

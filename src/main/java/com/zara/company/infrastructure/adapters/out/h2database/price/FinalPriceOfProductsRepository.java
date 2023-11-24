@@ -13,7 +13,10 @@ import java.util.List;
 public interface FinalPriceOfProductsRepository extends JpaRepository<PriceEntity,Long> {
 
     @Query("SELECT p FROM PriceEntity p WHERE p.productId = :productId " +
-            "                             AND p.brandId = :brandId AND CAST(p.startDate AS DATE) = :applicationDate")
-    public List<PriceEntity> findFinalPriceByProductIdAndBrandIdAndAppDate(Long brandId, Long productId, LocalDate applicationDate);
+            "                             AND p.brandId = :brandId " +
+            "                             AND CAST(p.startDate AS DATE) = :applicationDate")
+    public List<PriceEntity> findFinalPriceByProductIdAndBrandIdAndAppDate(Long brandId,
+                                                                           Long productId,
+                                                                           LocalDate applicationDate);
 
 }

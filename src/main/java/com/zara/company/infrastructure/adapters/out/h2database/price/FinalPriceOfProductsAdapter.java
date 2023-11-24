@@ -21,7 +21,9 @@ public class FinalPriceOfProductsAdapter implements FinalPriceOfProductsOutPort 
 
     @Override
     public List<Price> searchFinalPriceOfProducts(Parameter inputParameter) {
-        return finalPriceOfProductsRepository.findFinalPriceByProductIdAndBrandIdAndAppDate(inputParameter.getBrandId(), inputParameter.getProductId(), inputParameter.getApplicationDate())
+        return finalPriceOfProductsRepository.findFinalPriceByProductIdAndBrandIdAndAppDate(inputParameter.getBrandId(),
+                                                                                            inputParameter.getProductId(),
+                                                                                            inputParameter.getApplicationDate())
                 .stream()
                 .map(FinalPriceOfProductsMapper::entityToDomain)
                 .collect(Collectors.toList());
