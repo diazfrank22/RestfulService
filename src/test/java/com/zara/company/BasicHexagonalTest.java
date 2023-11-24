@@ -1,13 +1,9 @@
 package com.zara.company;
 
-
 import org.junit.jupiter.api.Test;
 import com.tngtech.archunit.core.importer.ClassFileImporter;
-import org.junit.jupiter.api.Test;
-
 import static com.tngtech.archunit.library.Architectures.layeredArchitecture;
 public class BasicHexagonalTest {
-
 
     @Test
     void basicTest() {
@@ -38,6 +34,4 @@ public class BasicHexagonalTest {
                 .whereLayer("Services").mayOnlyBeAccessedByLayers("Services")
                 .check(hexagon);
     }
-
-
 }

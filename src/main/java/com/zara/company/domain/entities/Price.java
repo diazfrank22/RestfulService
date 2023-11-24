@@ -1,10 +1,5 @@
 package com.zara.company.domain.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
 import java.time.LocalDateTime;
 
 public class Price {
@@ -87,5 +82,19 @@ public class Price {
 
     public void setCurrency(String currency) {
         this.currency = currency;
+    }
+
+    @Override
+    public String toString() {
+        return "Price{" +
+                "brandId=" + brandId +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", priceList=" + priceList +
+                ", productId=" + productId +
+                ", priority='" + priority + '\'' +
+                ", price=" + price +
+                ", currency='" + currency + '\'' +
+                '}';
     }
 }
