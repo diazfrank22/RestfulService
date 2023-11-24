@@ -6,7 +6,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.1.5</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath/>
 	</parent>
 	<groupId>com.zara.apirest</groupId>
 	<artifactId>api-rest</artifactId>
@@ -15,11 +15,18 @@
 	<description>Api Rest con H2</description>
 	<properties>
 		<java.version>17</java.version>
+		<groovy.version>4.0.15</groovy.version>
 	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.codehaus.groovy</groupId>
+					<artifactId>groovy-xml</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -73,8 +80,20 @@
 		<dependency>
 			<groupId>com.tngtech.archunit</groupId>
 			<artifactId>archunit</artifactId>
-			<version>0.21.0</version> <!-- Reemplaza con la última versión disponible -->
-			<scope>test</scope> <!-- Importante: asegúrate de que ArchUnit esté disponible durante las pruebas -->
+			<version>0.21.0</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.groovy</groupId>
+			<artifactId>groovy-xml</artifactId>
+			<version>4.0.15</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.codehaus.groovy</groupId>
+					<artifactId>groovy-xml</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 	</dependencies>
 
