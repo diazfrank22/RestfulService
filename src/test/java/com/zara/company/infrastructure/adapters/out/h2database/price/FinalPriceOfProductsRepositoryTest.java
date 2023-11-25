@@ -1,18 +1,14 @@
 package com.zara.company.infrastructure.adapters.out.h2database.price;
 
 import org.junit.jupiter.api.*;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
-import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
+import java.util.*;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -42,11 +38,14 @@ public class FinalPriceOfProductsRepositoryTest {
         var pricesEntity = new PriceEntity(7L, 1l, LocalDateTime.parse("2020-08-20T15:00:00", DateTimeFormatter.ISO_DATE_TIME), LocalDateTime.parse("2020-06-14T18:30:00", DateTimeFormatter.ISO_DATE_TIME), 2L, 35455L, "0", 25.45, "EUR");
 
         expectedPrices.add(pricesEntity);
+
         startDataRepository.save(pricesEntity);
 
-        List<PriceEntity> finAllFields = startDataRepository.findFinalPriceByProductIdAndBrandIdAndAppDate(1l, 35455l, LocalDate.parse("2020-08-20"));
+        Optional<List<PriceEntity>> finAllFields = startDataRepository.findFinalPriceByProductIdAndBrandIdAndAppDate(1l, 35455l, LocalDate.parse("2020-08-20"));
 
-        assertEquals(expectedPrices.toString(), finAllFields.toString(), "Text de busqueda de un registro");
+        List<PriceEntity> resultExpected = finAllFields.orElse(Collections.emptyList());
+
+        assertEquals(expectedPrices.toString(), resultExpected.toString(), "Text de busqueda de un registro");
     }
 
     @Test

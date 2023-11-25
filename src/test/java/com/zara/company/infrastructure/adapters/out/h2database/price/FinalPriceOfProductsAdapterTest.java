@@ -17,6 +17,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
@@ -51,7 +52,7 @@ public class FinalPriceOfProductsAdapterTest {
 
         var expectedPricesEntity = finalPriceOfProductsMapper.entityToDomain(priceEntity);
 
-        Mockito.when(finalPriceOfProductsRepository.findFinalPriceByProductIdAndBrandIdAndAppDate(anyLong(),anyLong(),any(LocalDate.class))).thenReturn(pricesEntityList);
+        Mockito.when(finalPriceOfProductsRepository.findFinalPriceByProductIdAndBrandIdAndAppDate(anyLong(),anyLong(),any(LocalDate.class))).thenReturn(Optional.of(pricesEntityList));
 
          //When
         List<Price> responseExpectedPricesEntity = finalPriceOfProductsAdapter.searchFinalPriceOfProducts(parametersOutPort);
