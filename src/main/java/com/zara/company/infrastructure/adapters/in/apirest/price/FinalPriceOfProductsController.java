@@ -44,13 +44,11 @@ public class FinalPriceOfProductsController {
             return Collections.singletonList(new ResponseEntity<>(errores, HttpStatus.BAD_REQUEST));
         }
         //response validation
-        if (finalProductPriceResponse.size() < 1) {
+        if (finalProductPriceResponse.isEmpty()){
             return Collections.singletonList(new ResponseEntity<>(finalProductPriceResponse, HttpStatus.NO_CONTENT));
         }
-        if (finalProductPriceResponse.equals(null) || finalProductPriceResponse.isEmpty()){
-            return Collections.singletonList(new ResponseEntity<>(finalProductPriceResponse, HttpStatus.NOT_FOUND));
-        }
-            return Collections.singletonList(new ResponseEntity<>(finalProductPriceResponse, HttpStatus.OK));
+
+        return Collections.singletonList(new ResponseEntity<>(finalProductPriceResponse, HttpStatus.OK));
 
     }
 }
