@@ -13,10 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @WebAdapter
 @RestController
@@ -35,7 +32,12 @@ public class FinalPriceOfProductsController {
 
         FinalPriceOfProductsInPort.Parameters inputParameters = new FinalPriceOfProductsInPort.Parameters(bodyParameterInput);
 
-        List<PriceDto> finalProductPriceResponse = finalPriceOfProductsPort.searchFinalPriceOfProducts(inputParameters);
+        Optional<List<PriceDto>> finalProductPriceResponse = Optional.ofNullable(finalPriceOfProductsPort.searchFinalPriceOfProducts(inputParameters));
+
+
+        if (!finalProductPriceResponse.isPresent()) {
+            return Collections.singletonList(new ResponseEntity<>(finalProductPriceResponse, HttpStatus.NOT_FOUND));
+        }
 
         //input parameter validation
         if (bindingResultValidation.hasErrors()){
