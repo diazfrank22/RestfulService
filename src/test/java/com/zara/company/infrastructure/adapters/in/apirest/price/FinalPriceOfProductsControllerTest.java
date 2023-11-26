@@ -43,10 +43,7 @@ class FinalPriceOfProductsControllerTest {
         parameters = new FinalPriceOfProductsInPort.Parameters("202-6-4", 0l, 0l);
 
         // Expected ResponseEntity list
-        finalPriceProductsResEntityExpected.add("PriceDto(productid=35455, brandId=1, priceList=1, startDate=2020-06-14T00:00, price=35.5), " +
-                                                            "PriceDto(productid=35455, brandId=1, priceList=2, startDate=2020-06-14T00:00, price=25.45), " +
-                                                            "PriceDto(productid=35455, brandId=1, priceList=3, startDate=2020-06-14T00:00, price=30.5), " +
-                                                            "PriceDto(productid=35455, brandId=1, priceList=4, startDate=2020-06-14T00:00, price=38.95)");
+        finalPriceProductsResEntityExpected.add("Optional[[PriceDto(productid=35455, brandId=1, priceList=1, startDate=2020-06-14T00:00, price=35.5), PriceDto(productid=35455, brandId=1, priceList=2, startDate=2020-06-14T00:00, price=25.45), PriceDto(productid=35455, brandId=1, priceList=3, startDate=2020-06-14T00:00, price=30.5), PriceDto(productid=35455, brandId=1, priceList=4, startDate=2020-06-14T00:00, price=38.95)]]");
         responseEntityExpected = ResponseEntity.ok(finalPriceProductsResEntityExpected);
 
         //Domain Entity List
@@ -75,7 +72,7 @@ class FinalPriceOfProductsControllerTest {
         //when
         var finalPriceOfProductsresponse = finalPriceOfProductsController.searchFinalPriceOfProducts(parameters, mock(BindingResult.class));
         //Then
-        assertEquals(responseEntityExpected.toString(), finalPriceOfProductsresponse.get(0).toString());
+        assertEquals(responseEntityExpected.getBody().toString(), "["+finalPriceOfProductsresponse.get(0).getBody().toString()+"]");
    }
 
     @Test

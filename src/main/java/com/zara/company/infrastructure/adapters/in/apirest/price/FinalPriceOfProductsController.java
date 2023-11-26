@@ -34,11 +34,6 @@ public class FinalPriceOfProductsController {
 
         Optional<List<PriceDto>> finalProductPriceResponse = Optional.ofNullable(finalPriceOfProductsPort.searchFinalPriceOfProducts(inputParameters));
 
-
-        if (!finalProductPriceResponse.isPresent()) {
-            return Collections.singletonList(new ResponseEntity<>(finalProductPriceResponse, HttpStatus.NOT_FOUND));
-        }
-
         //input parameter validation
         if (bindingResultValidation.hasErrors()){
             Map<String, String> errores = new HashMap<>();
@@ -46,7 +41,12 @@ public class FinalPriceOfProductsController {
             return Collections.singletonList(new ResponseEntity<>(errores, HttpStatus.BAD_REQUEST));
         }
         //response validation
-        if (finalProductPriceResponse.isEmpty()){
+
+        if (!finalProductPriceResponse.isPresent()) {
+            return Collections.singletonList(new ResponseEntity<>(finalProductPriceResponse, HttpStatus.NOT_FOUND));
+        }
+
+        if (finalProductPriceResponse.get().isEmpty()){
             return Collections.singletonList(new ResponseEntity<>(finalProductPriceResponse, HttpStatus.NO_CONTENT));
         }
 
