@@ -1,4 +1,4 @@
-RestApi con arquitectura hexagonal
+Restful Api con arquitectura hexagonal
 
 Datos de entrada:
 
