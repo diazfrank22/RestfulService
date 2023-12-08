@@ -1,7 +1,19 @@
+Arquitectura Hexagonal o de puertos y adaptadores
 
-Arquitectura Hexagonal
+Estructura:
+    aplicacion
+           servicios 
+           puertos
+                 entrada
+                 salida
+    adaptadores 
+          entrada
+          salida
+    dominio
+    comunes
 
-Datos de entrada
+
+Datos de entrada del servicio
 
 {
     "applicationDate": "2020-06-14",
