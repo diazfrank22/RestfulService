@@ -23,7 +23,7 @@ public class BasicHexagonalTest {
                 .whereLayer("Web").mayNotBeAccessedByAnyLayer()
 
                 // La capa de UseCases es utilizada por la Web y es implementada por la capa Service.
-                //.whereLayer("UseCases").mayOnlyBeAccessedByLayers("Web", "Services")
+                .whereLayer("UseCases").mayOnlyBeAccessedByLayers("Web", "Services")
 
                 // La capa de Ports es utilizada por Services y es implementada por la capa Adapters.
                 .whereLayer("Ports").mayOnlyBeAccessedByLayers("Services", "Adapters")

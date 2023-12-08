@@ -19,6 +19,9 @@ import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import org.hamcrest.CoreMatchers;
+
+import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -84,6 +87,22 @@ class FinalPriceOfProductsControllerTest {
         var finalPriceOfProductsresponse = finalPriceOfProductsController.searchFinalPriceOfProducts(parameters, mock(BindingResult.class));
         //Then
         assertEquals("200 OK", finalPriceOfProductsresponse.get(0).getStatusCode().toString());
+
+    }
+
+    @Test
+    public void ValidationParameter() throws JsonProcessingException, NoSuchFieldException {
+
+        // Given - When - Then
+        //{ "applicationDate": "2020-06-14", "productId": "35455", "brandId": "1" }
+         given().pathParam("applicationDate", 64l)
+                .pathParam("productId", " ")
+                .pathParam("brandId", " ")
+                .when()
+                .get("api/prices")
+                .then()
+                .statusCode(400)
+                .body("errors[0].errorMessage", CoreMatchers.equalTo("El código bcra del banco ingresado es inválido."));
 
     }
 }

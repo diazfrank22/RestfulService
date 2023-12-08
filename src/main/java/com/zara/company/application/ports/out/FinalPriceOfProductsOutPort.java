@@ -2,6 +2,7 @@ package com.zara.company.application.ports.out;
 
 import com.zara.company.application.ports.in.FinalPriceOfProductsInPort;
 import com.zara.company.domain.entities.Price;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,6 +14,7 @@ public interface FinalPriceOfProductsOutPort {
 
     @Getter
     @Setter
+    @AllArgsConstructor
     class Parameter {
 
         private LocalDate applicationDate;
@@ -21,12 +23,12 @@ public interface FinalPriceOfProductsOutPort {
 
         private Long brandId;
 
-        public Parameter(FinalPriceOfProductsInPort.Parameters inpputParameter) {
-
-            this.applicationDate = LocalDate.parse(inpputParameter.getApplicationDate());
-            this.productId = inpputParameter.getProductId();
-            this.brandId = inpputParameter.getBrandId();
-
-        }
+//        public Parameter(FinalPriceOfProductsInPort.Parameters inpputParameter) {
+//
+//            this.applicationDate = LocalDate.parse(inpputParameter.getApplicationDate());
+//            this.productId = inpputParameter.getProductId();
+//            this.brandId = inpputParameter.getBrandId();
+//
+//        }
     }
 }

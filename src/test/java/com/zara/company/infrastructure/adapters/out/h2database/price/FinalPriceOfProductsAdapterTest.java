@@ -39,10 +39,8 @@ public class FinalPriceOfProductsAdapterTest {
     void getFinalPriceOfProductsTest(){
 
         //Given
-        //input port parameters In
-        var parametersInPort = new FinalPriceOfProductsInPort.Parameters("2020-06-14", 35455l, 2l);
         //out port parameters
-        var parametersOutPort = new FinalPriceOfProductsOutPort.Parameter(parametersInPort);
+        var parametersOutPort = new FinalPriceOfProductsOutPort.Parameter(LocalDate.parse("2020-06-14"), 35455l, 2l);
 
         var priceEntity = new PriceEntity(8l, 1L, LocalDateTime.parse("2020-08-20T15:00:00", DateTimeFormatter.ISO_DATE_TIME), LocalDateTime.parse("2020-06-14T18:30:00", DateTimeFormatter.ISO_DATE_TIME), 2L, 35455L, "0", 25.45, "EUR");
 
@@ -66,9 +64,9 @@ public class FinalPriceOfProductsAdapterTest {
     public void validateResponseOfTheDateParameter() {
 
         //Given //input port parameters In  //Case 1
-        var parameterInPort = new FinalPriceOfProductsInPort.Parameters("2020-06-1", 35455l, 2l);
+
         //When //out port parameters //Case 1
-        try{var parametersOutPort = new FinalPriceOfProductsOutPort.Parameter(parameterInPort);}
+        try{var parametersOutPort = new FinalPriceOfProductsOutPort.Parameter(LocalDate.parse("2020-06-1"),35455l,2l);}
         catch (DateTimeParseException e){
             //Then
             System.out.println(e.getMessage());

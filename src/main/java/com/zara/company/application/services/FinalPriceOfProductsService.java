@@ -25,7 +25,7 @@ public class FinalPriceOfProductsService implements FinalPriceOfProductsInPort {
     @Override
     public List<PriceDto> searchFinalPriceOfProducts(Parameters inputParameters) {
 
-        FinalPriceOfProductsOutPort.Parameter inputParametersport = new FinalPriceOfProductsOutPort.Parameter(inputParameters);
+        FinalPriceOfProductsOutPort.Parameter inputParametersport = new FinalPriceOfProductsOutPort.Parameter(LocalDate.parse(inputParameters.getApplicationDate()), inputParameters.getBrandId(), inputParameters.getProductId());
 
         return applyBusinessRuleForProductPrices(inputParametersport).entrySet()
                         .stream()
